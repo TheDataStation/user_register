@@ -27,7 +27,7 @@ async def create_user(user: UserIn):
     existed_user = await database.fetch_one(query)
     if existed_user is not None:
         return Message(status=0, data=[], msg="username already exists")
-
+    # no existing username, create new user
     hashed = bcrypt.hashpw(user.password.encode(), bcrypt.gensalt())
     query = users.insert().values(user_name=user.user_name, first_name=user.first_name, last_name=user.last_name,
                                   password=hashed.decode(), email_address=user.email_address, institution=user.institution,
@@ -40,10 +40,12 @@ async def create_user(user: UserIn):
 async def login_user(user: UserIn):
     pw = user.password
     query = users.select().where(users.c.user_name == user.user_name)
-    user = database.fetch_one(query)[0]
+    user = database.fetch_one(query)
+
     if user is None:
-        pass
+        # username is wrong, login fail
+        return Message(status=0, data=[], msg="username or password incorrect")
     if bcrypt.checkpw(bytearray(pw), bytearray(user.password)):
-        return ""
+        return Message(status=1, data=[user], msg="success")
     else:
-        pass
+        return Message(status=0, data=[], msg="username or password incorrect")
