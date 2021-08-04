@@ -1,23 +1,26 @@
 from fastapi import APIRouter
-from typing import List
 from db_config import database
-from models.users import User, UserIn, users
+from models.users import UserIn, users
 from models.message import Message
 import bcrypt
 
 router = APIRouter()
 
 
-@router.get("/users/", response_model=List[User])
+@router.get("/users/", response_model=Message)
 async def get_all_users():
     query = users.select()
-    return await database.fetch_all(query)
+    all_users = await database.fetch_all(query)
+    return Message(status=1, data=all_users, msg="success")
 
 
-@router.post("/users/user_name", response_model=User)
+@router.post("/users/user_name", response_model=Message)
 async def get_user_by_user_name(username: str):
     query = users.select().where(users.c.user_name == username)
-    return await database.fetch_one(query)
+    user = await database.fetch_one(query)
+    if user is None:
+        return Message(status=0, data=[], msg="user does not exist")
+    return Message(status=1, data=[user], msg="success")
 
 
 @router.post("/users/", response_model=Message)
@@ -40,12 +43,12 @@ async def create_user(user: UserIn):
 async def login_user(user: UserIn):
     pw = user.password
     query = users.select().where(users.c.user_name == user.user_name)
-    user = database.fetch_one(query)
+    user = await database.fetch_one(query)
 
     if user is None:
         # username is wrong, login fail
         return Message(status=0, data=[], msg="username or password incorrect")
-    if bcrypt.checkpw(bytearray(pw), bytearray(user.password)):
+    if bcrypt.checkpw(pw.encode(), user.password.encode()):
         return Message(status=1, data=[user], msg="success")
     else:
         return Message(status=0, data=[], msg="username or password incorrect")
