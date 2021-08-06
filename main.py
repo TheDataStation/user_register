@@ -21,4 +21,6 @@ async def shutdown():
     await database.disconnect()
 
 
-
+@app.get('/')
+async def root():
+    return {"message": "Welcome to user register"}
