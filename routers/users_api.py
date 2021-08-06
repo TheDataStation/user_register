@@ -1,3 +1,5 @@
+import sqlite3
+
 from fastapi import APIRouter
 from db_config import database
 from models.users import UserIn, users
@@ -35,7 +37,11 @@ async def create_user(user: UserIn):
     query = users.insert().values(user_name=user.user_name, first_name=user.first_name, last_name=user.last_name,
                                   password=hashed.decode(), email_address=user.email_address, institution=user.institution,
                                   country=user.country)
-    last_record_id = await database.execute(query)
+    try:
+        # let database integrity constraint double check the request
+        last_record_id = await database.execute(query)
+    except sqlite3.DatabaseError as err:
+        return Message(status=0, data=[], msg="internal database error")
     return Message(status=1, data=[{**user.dict(), "id": last_record_id}], msg="success")
 
 

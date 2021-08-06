@@ -27,7 +27,7 @@ users = sqlalchemy.Table(
     "users",
     metadata,
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column("user_name", sqlalchemy.String),
+    sqlalchemy.Column("user_name", sqlalchemy.String, unique=True),
     sqlalchemy.Column("first_name", sqlalchemy.String),
     sqlalchemy.Column("last_name", sqlalchemy.String),
     sqlalchemy.Column("password", sqlalchemy.String),

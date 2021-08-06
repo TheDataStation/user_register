@@ -3,6 +3,7 @@
 This component handles user registration in the context of Data Stations.
 
 ## User Model
+
 ```python
 id: int
 user_name: str
@@ -13,6 +14,7 @@ email_address: str
 institution: str
 country: str
 ```
+user model [source file](/models/users.py)
 
 ## Software Stack
 
