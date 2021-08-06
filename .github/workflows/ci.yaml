@@ -1,0 +1,31 @@
+name: CI_user_register
+
+on: push
+
+jobs:
+  basic-test:
+    runs-on: ubuntu-16.04
+    timeout-minutes: 20
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: install requirements.txt
+      run: |
+        pip install -r requirements.txt
+    - name: test server startup
+      run: |
+        uvicorn main:app &
+
+        # now wait for this to become responsive to connections for 30 seconds
+        wget http://127.0.0.1:8000/ --retry-connrefused --tries 30 --waitretry=1
+
+        # TODO: run some basic tests against the server here
+
+        # now we're finished with the server
+        killall --wait uvicorn
+
+

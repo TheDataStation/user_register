@@ -1,5 +1,6 @@
 # user_register
-The user register component of Data Station
+
+This component handles user registration in the context of Data Stations.
 
 ## User Model
 ```python
@@ -13,7 +14,7 @@ institution: str
 country: str
 ```
 
-## Technique Stack
+## Software Stack
 
 Language -> Python3.8
 
