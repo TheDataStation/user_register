@@ -2,7 +2,7 @@ import sqlite3
 
 from fastapi import APIRouter
 from db_config import database
-from models.users import UserIn, users
+from models.users import UserRegister, UserLogin, users
 from models.message import Message
 import bcrypt
 
@@ -26,7 +26,7 @@ async def get_user_by_user_name(username: str):
 
 
 @router.post("/users/", response_model=Message)
-async def create_user(user: UserIn):
+async def create_user(user: UserRegister):
     # check if there is an existing user
     query = users.select().where(users.c.user_name == user.user_name)
     existed_user = await database.fetch_one(query)
@@ -46,7 +46,7 @@ async def create_user(user: UserIn):
 
 
 @router.post("/users/login", response_model=Message)
-async def login_user(user: UserIn):
+async def login_user(user: UserLogin):
     pw = user.password
     query = users.select().where(users.c.user_name == user.user_name)
     user = await database.fetch_one(query)

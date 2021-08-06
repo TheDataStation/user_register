@@ -13,7 +13,7 @@ class User(BaseModel):
     country: str
 
 
-class UserIn(BaseModel):
+class UserRegister(BaseModel):
     user_name: str
     first_name: str
     last_name: str
@@ -21,6 +21,11 @@ class UserIn(BaseModel):
     email_address: str
     institution: str
     country: str
+
+
+class UserLogin(BaseModel):
+    user_name: str
+    password: str
 
 
 users = sqlalchemy.Table(
