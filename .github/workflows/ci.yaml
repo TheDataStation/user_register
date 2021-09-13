@@ -35,4 +35,4 @@ jobs:
       - uses: TheDataStation/integration/.github/actions/integ-user-register@master
         with:
           user_register_commit: ${{ github.ref }}
-          user_register_repository: $ {{ github.repository }}
+          user_register_repository: ${{ github.repository }}
