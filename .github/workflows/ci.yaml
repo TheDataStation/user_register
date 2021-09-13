@@ -23,7 +23,8 @@ jobs:
         # now wait for this to become responsive to connections for 30 seconds
         wget http://127.0.0.1:8000/ --retry-connrefused --tries 30 --waitretry=1
 
-        # TODO: run some basic tests against the server here
+        # TODO: run some basic tests against the server here if possible
+        # without database backend
 
         # now we're finished with the server
         killall --wait uvicorn
