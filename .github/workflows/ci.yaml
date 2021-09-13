@@ -28,4 +28,11 @@ jobs:
         # now we're finished with the server
         killall --wait uvicorn
 
-
+  integration-test:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 20
+    steps:
+      - uses: TheDataStation/integration/.github/actions/integ-user-register@master
+        with:
+          user_register_commit: ${{ github.ref }}
+          user_register_repository: $ {{ github.repository }}
