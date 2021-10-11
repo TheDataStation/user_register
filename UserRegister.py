@@ -56,7 +56,8 @@ class UserRegisterServicer(user_register_pb2_grpc.UserRegisterServicer):
             return user_register_pb2.UserResponse(status=1, msg="username already exists")
         # no existing username, create new user
         hashed = bcrypt.hashpw(request.password.encode(), bcrypt.gensalt())
-        new_user = database_pb2.User(user_name=request.user_name, first_name=request.first_name, last_name=request.last_name,
+        new_user = database_pb2.User(user_name=request.user_name, first_name=request.first_name,
+                                     last_name=request.last_name,
                                      password=hashed.decode(), email=request.email, institution=request.institution,
                                      country=request.country)
         resp = database_service_stub.CreateUser(new_user)
