@@ -52,7 +52,6 @@ class UserRegisterServicer(user_register_pb2_grpc.UserRegisterServicer):
         # check if there is an existing user
         existed_user = database_service_stub.GetUserByUserName(database_pb2.User(user_name=request.user_name))
         if existed_user.status == 1:
-            # return Message(status=0, data=[], msg="username already exists")
             return user_register_pb2.UserResponse(status=1, msg="username already exists")
         # no existing username, create new user
         hashed = bcrypt.hashpw(request.password.encode(), bcrypt.gensalt())
@@ -62,10 +61,8 @@ class UserRegisterServicer(user_register_pb2_grpc.UserRegisterServicer):
                                      country=request.country)
         resp = database_service_stub.CreateUser(new_user)
         if resp.status == -1:
-            # return Message(status=0, data=[], msg="internal database error")
             return user_register_pb2.UserResponse(status=1, msg="internal database error")
 
-        # return Message(status=1, data=[get_first_user(resp.data)], msg="success")
         return user_register_pb2.UserResponse(status=0, msg="success")
 
     def LoginUser(self, request, context):
