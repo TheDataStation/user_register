@@ -19,12 +19,23 @@ class UserRegisterStub(object):
                 request_serializer=user__register__pb2.User.SerializeToString,
                 response_deserializer=user__register__pb2.UserResponse.FromString,
                 )
+        self.LoginUser = channel.unary_unary(
+                '/client_interface.UserRegister/LoginUser',
+                request_serializer=user__register__pb2.User.SerializeToString,
+                response_deserializer=user__register__pb2.TokenResponse.FromString,
+                )
 
 
 class UserRegisterServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def CreateUser(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def LoginUser(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -37,6 +48,11 @@ def add_UserRegisterServicer_to_server(servicer, server):
                     servicer.CreateUser,
                     request_deserializer=user__register__pb2.User.FromString,
                     response_serializer=user__register__pb2.UserResponse.SerializeToString,
+            ),
+            'LoginUser': grpc.unary_unary_rpc_method_handler(
+                    servicer.LoginUser,
+                    request_deserializer=user__register__pb2.User.FromString,
+                    response_serializer=user__register__pb2.TokenResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -62,5 +78,22 @@ class UserRegister(object):
         return grpc.experimental.unary_unary(request, target, '/client_interface.UserRegister/CreateUser',
             user__register__pb2.User.SerializeToString,
             user__register__pb2.UserResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def LoginUser(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/client_interface.UserRegister/LoginUser',
+            user__register__pb2.User.SerializeToString,
+            user__register__pb2.TokenResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

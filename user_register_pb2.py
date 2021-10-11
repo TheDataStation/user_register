@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x13user_register.proto\x12\x10\x63lient_interface\"Q\n\x0cUserResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12$\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x16.client_interface.User\"\xa2\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x12\n\nfirst_name\x18\x03 \x01(\t\x12\x11\n\tlast_name\x18\x04 \x01(\t\x12\x10\n\x08password\x18\x05 \x01(\t\x12\r\n\x05\x65mail\x18\x06 \x01(\t\x12\x13\n\x0binstitution\x18\x07 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x08 \x01(\t\x12\r\n\x05limit\x18\t \x01(\x05\x32V\n\x0cUserRegister\x12\x46\n\nCreateUser\x12\x16.client_interface.User\x1a\x1e.client_interface.UserResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x13user_register.proto\x12\x10\x63lient_interface\"Q\n\x0cUserResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12$\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x16.client_interface.User\"\xa2\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x12\n\nfirst_name\x18\x03 \x01(\t\x12\x11\n\tlast_name\x18\x04 \x01(\t\x12\x10\n\x08password\x18\x05 \x01(\t\x12\r\n\x05\x65mail\x18\x06 \x01(\t\x12\x13\n\x0binstitution\x18\x07 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x08 \x01(\t\x12\r\n\x05limit\x18\t \x01(\x05\".\n\rTokenResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\r\n\x05token\x18\x02 \x01(\t2\x9e\x01\n\x0cUserRegister\x12\x46\n\nCreateUser\x12\x16.client_interface.User\x1a\x1e.client_interface.UserResponse\"\x00\x12\x46\n\tLoginUser\x12\x16.client_interface.User\x1a\x1f.client_interface.TokenResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -158,9 +158,49 @@ _USER = _descriptor.Descriptor(
   serialized_end=287,
 )
 
+
+_TOKENRESPONSE = _descriptor.Descriptor(
+  name='TokenResponse',
+  full_name='client_interface.TokenResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='status', full_name='client_interface.TokenResponse.status', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='token', full_name='client_interface.TokenResponse.token', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=289,
+  serialized_end=335,
+)
+
 _USERRESPONSE.fields_by_name['data'].message_type = _USER
 DESCRIPTOR.message_types_by_name['UserResponse'] = _USERRESPONSE
 DESCRIPTOR.message_types_by_name['User'] = _USER
+DESCRIPTOR.message_types_by_name['TokenResponse'] = _TOKENRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 UserResponse = _reflection.GeneratedProtocolMessageType('UserResponse', (_message.Message,), {
@@ -177,6 +217,13 @@ User = _reflection.GeneratedProtocolMessageType('User', (_message.Message,), {
   })
 _sym_db.RegisterMessage(User)
 
+TokenResponse = _reflection.GeneratedProtocolMessageType('TokenResponse', (_message.Message,), {
+  'DESCRIPTOR' : _TOKENRESPONSE,
+  '__module__' : 'user_register_pb2'
+  # @@protoc_insertion_point(class_scope:client_interface.TokenResponse)
+  })
+_sym_db.RegisterMessage(TokenResponse)
+
 
 
 _USERREGISTER = _descriptor.ServiceDescriptor(
@@ -186,8 +233,8 @@ _USERREGISTER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=289,
-  serialized_end=375,
+  serialized_start=338,
+  serialized_end=496,
   methods=[
   _descriptor.MethodDescriptor(
     name='CreateUser',
@@ -196,6 +243,16 @@ _USERREGISTER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_USER,
     output_type=_USERRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='LoginUser',
+    full_name='client_interface.UserRegister.LoginUser',
+    index=1,
+    containing_service=None,
+    input_type=_USER,
+    output_type=_TOKENRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
