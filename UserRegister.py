@@ -69,23 +69,19 @@ class UserRegisterServicer(user_register_pb2_grpc.UserRegisterServicer):
 
     def LoginUser(self, request, context):
         # check if there is an existing user
-        print("yyyyyyyyyy")
-        existed_user = database_service_stub.GetUserByUserName(database_pb2.User(user_name=request.username))
-        print("123456")
+        existed_user = database_service_stub.GetUserByUserName(database_pb2.User(user_name=request.user_name))
         # First check if the user exists
         if existed_user == -1:
-            return user_register_pb2.TokenResponse(status=1, msg="username is wrong")
+            return user_register_pb2.TokenResponse(status=1, token="username is wrong")
         user = get_first_user(existed_user.data, password=True)
-        print("897t8t8r98")
         if bcrypt.checkpw(request.password.encode(), user.password.encode()):
             # In here the password matches, we store the content for the token in the message
             access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
             access_token = create_access_token(
                 data={"sub": user.user_name}, expires_delta=access_token_expires
             )
-            print("before return")
-            return user_register_pb2.TokenResponse(status=0, msg=access_token)
-        user_register_pb2.TokenResponse(status=1, msg="password does not match")
+            return user_register_pb2.TokenResponse(status=0, token=str(access_token))
+        user_register_pb2.TokenResponse(status=1, token="password does not match")
 
 
 def serve():
