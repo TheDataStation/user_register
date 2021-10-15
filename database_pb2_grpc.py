@@ -49,6 +49,11 @@ class DatabaseStub(object):
                 request_serializer=database__pb2.Dataset.SerializeToString,
                 response_deserializer=database__pb2.DatasetResp.FromString,
                 )
+        self.GetDatasetById = channel.unary_unary(
+                '/Database/GetDatasetById',
+                request_serializer=database__pb2.Dataset.SerializeToString,
+                response_deserializer=database__pb2.DatasetResp.FromString,
+                )
         self.GetAllMetadataID = channel.unary_unary(
                 '/Database/GetAllMetadataID',
                 request_serializer=database__pb2.DatabaseEmpty.SerializeToString,
@@ -101,6 +106,12 @@ class DatabaseServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetDatasetById(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def GetAllMetadataID(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -142,6 +153,11 @@ def add_DatabaseServicer_to_server(servicer, server):
             ),
             'GetDatasetByName': grpc.unary_unary_rpc_method_handler(
                     servicer.GetDatasetByName,
+                    request_deserializer=database__pb2.Dataset.FromString,
+                    response_serializer=database__pb2.DatasetResp.SerializeToString,
+            ),
+            'GetDatasetById': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetDatasetById,
                     request_deserializer=database__pb2.Dataset.FromString,
                     response_serializer=database__pb2.DatasetResp.SerializeToString,
             ),
@@ -274,6 +290,23 @@ class Database(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/Database/GetDatasetByName',
+            database__pb2.Dataset.SerializeToString,
+            database__pb2.DatasetResp.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetDatasetById(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/Database/GetDatasetById',
             database__pb2.Dataset.SerializeToString,
             database__pb2.DatasetResp.FromString,
             options, channel_credentials,
