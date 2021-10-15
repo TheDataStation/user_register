@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0e\x64\x61tabase.proto\"\xa2\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x12\n\nfirst_name\x18\x03 \x01(\t\x12\x11\n\tlast_name\x18\x04 \x01(\t\x12\x10\n\x08password\x18\x05 \x01(\t\x12\r\n\x05\x65mail\x18\x06 \x01(\t\x12\x13\n\x0binstitution\x18\x07 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x08 \x01(\t\x12\r\n\x05limit\x18\t \x01(\x05\"@\n\x0cUserResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x13\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x05.User\"\xa6\x01\n\x07\x44\x61taset\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x0e\n\x06upload\x18\x04 \x01(\x08\x12\x0b\n\x03url\x18\x05 \x01(\t\x12\x10\n\x08owner_id\x18\x06 \x01(\x05\x12\x0f\n\x07\x64\x65rived\x18\x07 \x01(\x08\x12\x14\n\x0c\x64\x65rived_type\x18\x08 \x01(\t\x12\x16\n\x0eorigin_data_id\x18\t \x01(\x05\"B\n\x0b\x44\x61tasetResp\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x16\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x08.Dataset2\xaa\x02\n\x08\x44\x61tabase\x12$\n\nCreateUser\x12\x05.User\x1a\r.UserResponse\"\x00\x12!\n\x07GetUser\x12\x05.User\x1a\r.UserResponse\"\x00\x12%\n\x0bGetAllUsers\x12\x05.User\x1a\r.UserResponse\"\x00\x12+\n\x11GetUserByUserName\x12\x05.User\x1a\r.UserResponse\"\x00\x12(\n\x0eGetUserByEmail\x12\x05.User\x1a\r.UserResponse\"\x00\x12)\n\rCreateDataset\x12\x08.Dataset\x1a\x0c.DatasetResp\"\x00\x12,\n\x10GetDatasetByName\x12\x08.Dataset\x1a\x0c.DatasetResp\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x0e\x64\x61tabase.proto\"\xa2\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x11\n\tuser_name\x18\x02 \x01(\t\x12\x12\n\nfirst_name\x18\x03 \x01(\t\x12\x11\n\tlast_name\x18\x04 \x01(\t\x12\x10\n\x08password\x18\x05 \x01(\t\x12\r\n\x05\x65mail\x18\x06 \x01(\t\x12\x13\n\x0binstitution\x18\x07 \x01(\t\x12\x0f\n\x07\x63ountry\x18\x08 \x01(\t\x12\r\n\x05limit\x18\t \x01(\x05\"@\n\x0cUserResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x13\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x05.User\"\xa6\x01\n\x07\x44\x61taset\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x0e\n\x06upload\x18\x04 \x01(\x08\x12\x0b\n\x03url\x18\x05 \x01(\t\x12\x10\n\x08owner_id\x18\x06 \x01(\x05\x12\x0f\n\x07\x64\x65rived\x18\x07 \x01(\x08\x12\x14\n\x0c\x64\x65rived_type\x18\x08 \x01(\t\x12\x16\n\x0eorigin_data_id\x18\t \x01(\x05\"B\n\x0b\x44\x61tasetResp\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x0b\n\x03msg\x18\x02 \x01(\t\x12\x16\n\x04\x64\x61ta\x18\x03 \x03(\x0b\x32\x08.Dataset\"\x0f\n\rDatabaseEmpty\"G\n\x10MetadataResponse\x12\x0e\n\x06status\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x12\n\nmetadataID\x18\x03 \x03(\x05\x32\xe3\x02\n\x08\x44\x61tabase\x12$\n\nCreateUser\x12\x05.User\x1a\r.UserResponse\"\x00\x12!\n\x07GetUser\x12\x05.User\x1a\r.UserResponse\"\x00\x12%\n\x0bGetAllUsers\x12\x05.User\x1a\r.UserResponse\"\x00\x12+\n\x11GetUserByUserName\x12\x05.User\x1a\r.UserResponse\"\x00\x12(\n\x0eGetUserByEmail\x12\x05.User\x1a\r.UserResponse\"\x00\x12)\n\rCreateDataset\x12\x08.Dataset\x1a\x0c.DatasetResp\"\x00\x12,\n\x10GetDatasetByName\x12\x08.Dataset\x1a\x0c.DatasetResp\"\x00\x12\x37\n\x10GetAllMetadataID\x12\x0e.DatabaseEmpty\x1a\x11.MetadataResponse\"\x00\x62\x06proto3'
 )
 
 
@@ -292,12 +292,85 @@ _DATASETRESP = _descriptor.Descriptor(
   serialized_end=484,
 )
 
+
+_DATABASEEMPTY = _descriptor.Descriptor(
+  name='DatabaseEmpty',
+  full_name='DatabaseEmpty',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=486,
+  serialized_end=501,
+)
+
+
+_METADATARESPONSE = _descriptor.Descriptor(
+  name='MetadataResponse',
+  full_name='MetadataResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='status', full_name='MetadataResponse.status', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='MetadataResponse.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='metadataID', full_name='MetadataResponse.metadataID', index=2,
+      number=3, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=503,
+  serialized_end=574,
+)
+
 _USERRESPONSE.fields_by_name['data'].message_type = _USER
 _DATASETRESP.fields_by_name['data'].message_type = _DATASET
 DESCRIPTOR.message_types_by_name['User'] = _USER
 DESCRIPTOR.message_types_by_name['UserResponse'] = _USERRESPONSE
 DESCRIPTOR.message_types_by_name['Dataset'] = _DATASET
 DESCRIPTOR.message_types_by_name['DatasetResp'] = _DATASETRESP
+DESCRIPTOR.message_types_by_name['DatabaseEmpty'] = _DATABASEEMPTY
+DESCRIPTOR.message_types_by_name['MetadataResponse'] = _METADATARESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 User = _reflection.GeneratedProtocolMessageType('User', (_message.Message,), {
@@ -328,6 +401,20 @@ DatasetResp = _reflection.GeneratedProtocolMessageType('DatasetResp', (_message.
   })
 _sym_db.RegisterMessage(DatasetResp)
 
+DatabaseEmpty = _reflection.GeneratedProtocolMessageType('DatabaseEmpty', (_message.Message,), {
+  'DESCRIPTOR' : _DATABASEEMPTY,
+  '__module__' : 'database_pb2'
+  # @@protoc_insertion_point(class_scope:DatabaseEmpty)
+  })
+_sym_db.RegisterMessage(DatabaseEmpty)
+
+MetadataResponse = _reflection.GeneratedProtocolMessageType('MetadataResponse', (_message.Message,), {
+  'DESCRIPTOR' : _METADATARESPONSE,
+  '__module__' : 'database_pb2'
+  # @@protoc_insertion_point(class_scope:MetadataResponse)
+  })
+_sym_db.RegisterMessage(MetadataResponse)
+
 
 
 _DATABASE = _descriptor.ServiceDescriptor(
@@ -337,8 +424,8 @@ _DATABASE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=487,
-  serialized_end=785,
+  serialized_start=577,
+  serialized_end=932,
   methods=[
   _descriptor.MethodDescriptor(
     name='CreateUser',
@@ -407,6 +494,16 @@ _DATABASE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_DATASET,
     output_type=_DATASETRESP,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetAllMetadataID',
+    full_name='Database.GetAllMetadataID',
+    index=7,
+    containing_service=None,
+    input_type=_DATABASEEMPTY,
+    output_type=_METADATARESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
