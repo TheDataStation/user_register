@@ -65,7 +65,7 @@ class UserRegisterServicer(user_register_pb2_grpc.UserRegisterServicer):
 
         return user_register_pb2.UserResponse(status=0, msg="success")
 
-    def LoginUser(self, request, context):
+    def LoginUser(self, request: user_register_pb2.User, context):
         # check if there is an existing user
         existed_user = database_service_stub.GetUserByUserName(database_pb2.User(user_name=request.user_name))
         # First check if the user exists
