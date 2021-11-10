@@ -48,7 +48,6 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
 class UserRegisterServicer(user_register_pb2_grpc.UserRegisterServicer):
 
     def CreateUser(self, request: user_register_pb2.User, context):
-        print("Create User")
         # check if there is an existing user
         existed_user = database_service_stub.GetUserByUserName(database_pb2.User(user_name=request.user_name))
         if existed_user.status == 1:
